@@ -34,6 +34,10 @@ session.add_all([user2, user3])
 session.commit()
 
 all_users = session.query(Users).all()
+one_user = session.query(Users).get(2)
+
+print(one_user.name)
+print(one_user.age)
 
 for row in all_users:
     print(f'ID: {row.id}')
