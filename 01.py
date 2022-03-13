@@ -34,14 +34,25 @@ user3 = Users(name='João', age=40)
 session.add_all([user2, user3])
 session.commit()
 
-all_users = session.query(Users).all()
 one_user = session.query(Users).get(2)
 
 print('First User:')
 print(one_user.name)
 print(one_user.age)
 
+# update a object
+one_user.name = 'Changed name'
+session.commit()
+
+print('\nChanged User:')
+print(one_user.name)
+print(one_user.age)
+
+session.delete(one_user)
+
+all_users = session.query(Users).all()
 print('\nAll Users:')
+
 for row in all_users:
     print(f'ID: {row.id}')
     print(f'Name: {row.name}')
